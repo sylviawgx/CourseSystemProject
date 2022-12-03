@@ -11,7 +11,6 @@ class StudentTest {
     Course course1 = new Course();
     Course course2 = new Course();
     Student student = new Student();
-
     @Test
     void checkTime() throws IOException {
         // 設定課程
