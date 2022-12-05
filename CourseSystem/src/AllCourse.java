@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ public class AllCourse{
 
     public Course courseExist(String choose){//find the input name or id exist or not
         for (Course course : courseList) {
-            if(course.name.equals(choose) || course.ID.equals(choose)){
+            if(course.ID.equals(choose) || course.name.equals(choose)){
                 return course;
             }
         }
@@ -16,7 +18,7 @@ public class AllCourse{
     }
 
     public void changeString(int num){
-        int week = (num - 1)/ 13;
+        int week = (num - 1) / 13;
         int time = (num - 1) % 13 + 1;
         switch (week){
             case 0 -> System.out.printf("%s", "一");
@@ -30,7 +32,6 @@ public class AllCourse{
 
     public void printCourseList(){// print all courses on window
         for(Course course: courseList){
-//            System.out.println(course.ID + " " + course.name + " "+ course.credit + " " + (course.requireOrElective ? "必修": "選修"));
             System.out.printf("%-10s\t%-10s\t%-3d\t%-3s",course.ID, course.name, course.credit, course.requireOrElective ? "選修":"必修");
             for(int num: course.time){
                 changeString(num);
@@ -41,7 +42,10 @@ public class AllCourse{
     }
 
     public void CourseInit() throws IOException{
-        FileReader file = new FileReader("C:\\University\\third_year_up\\軟體工程開發實務\\select_course_os\\CourseSystem\\CourseSystem_v3\\CourseSystem\\src\\courseData.txt");
+        Path path = Paths.get("");
+        String directoryName = path.toAbsolutePath().normalize().toString();
+
+        FileReader file = new FileReader(directoryName+"\\CourseSystem\\src\\courseData.txt");
         Scanner scanner = new Scanner(file);
         while(scanner.hasNext()){
             if(scanner.hasNextLine()){

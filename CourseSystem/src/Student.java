@@ -4,10 +4,6 @@ import java.util.List;
 public class Student {
     int credit;
     List<Course> CourseSelected = new ArrayList<>();
-
-    public Student(int credit){
-        this.credit = credit;
-    }
     public Student(){}
     List<Integer> time = new ArrayList<>();
 

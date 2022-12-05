@@ -15,9 +15,7 @@ public class Course {
         this.requireOrElective = requireOrElective;
     }
 
-    public Course(){
-
-    }
+    public Course(){}
 }
 
 
